@@ -7,4 +7,14 @@
         appId: "1:124867645389:web:4530e19e575669f3cabe84",
         measurementId: "G-1KTKSSCJ33"
     };
-    firebase.initializeApp(firebaseConfig);
+    
+    // Initialize Firebase only if available
+    try {
+        if (typeof firebase !== 'undefined') {
+            firebase.initializeApp(firebaseConfig);
+        } else {
+            console.log('[Firebase] Firebase not available, continuing without Firebase features');
+        }
+    } catch (error) {
+        console.log('[Firebase] Failed to initialize Firebase:', error);
+    }
